@@ -10,13 +10,22 @@ function CharacterCard(props) {
             <div className="content">
                 <ul>
                     <li>
-                        <strong>Name</strong> {props.name}
+                        <strong>Name</strong> {props.name[0]}
                     </li>
                     <li>
-                        <strong>Name</strong> {props.name}
+                        <strong>Name:</strong> {props.name[1]}
                     </li>
                     <li>
-                        <strong>Name</strong> {props.name}
+                        <strong>Name:</strong> {props.name[2]}
+                    </li>
+                    <li>
+                        <strong>Name</strong> {props.name[3]}
+                    </li>
+                    <li>
+                        <strong>Name:</strong> {props.name[4]}
+                    </li>
+                    <li>
+                        <strong>Name:</strong> {props.name[5]}
                     </li>
                 </ul>
             </div>
