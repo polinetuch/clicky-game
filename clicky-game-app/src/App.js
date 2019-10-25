@@ -1,82 +1,95 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import CharacterCard from "./components/CharacterCard/CharacterCard";
+import friends from "./friends.json";
+import Title from "./components/Title/title";
 
+let correctGuess = 0; 
+let bestScore = 0; 
+let clickMessage = "Click on the character to gain points! Click twice, you lose!"
 
 class App extends Component {
 
   state = {
+    friends,
+    correctGuess,
+    bestScore,
+    clickMessage
   };
 
-  render() {
-    return (<h1>hello world</h1>)
+  setClicked = id => {
+    const friends = this.state.friends;
+    const clickedMatch = friends.filter(friend => friend.id === id);
+
+    if (clickedMatch[0].clicked) {
+      console.log("Correct Guess: " + correctGuess);
+      console.log("Best Score: " + bestScore);
+
+      correctGuess = 0; 
+      clickMessage = "Darn it! You already clicked on this one!"
+
+      for (let i = 0; i < friends.length; i++) {
+        friends[i].clicked = false
+      };
+      
+      this.setState({ clickMessage });
+      this.setState({ correctGuess });
+      this.setState({ friends });
+    } else if (correctGuess < 11) {
+
+      clickedMatch[0].clicked = true;
+
+      correctGuess++;
+
+      clickMessage = "Great choice!";
+
+      if (correctGuess > bestScore) {
+        bestScore = correctGuess;
+        this.setState({ bestScore });
+      }
+
+      friends.sort(function(a, b){return 0.5 - Math.random()});
+
+      this.setState({ friends });
+      this.setState({ correctGuess });
+      this.setState({ clickMessage });
+    } else {
+      clickedMatch[0].clicked = true;
+      correctGuess = 0;
+
+      clickMessage = "Well done! You've got them right!";
+
+      bestScore = 12;
+
+      this.setState({ bestScore });
+      
+      for (let i = 0; i < friends.length; i++) {
+        friends[i].clicked = false;
+      }
+      friends.sort(function(a, b) {return 0.5 - Math.random()});
+
+      this.setState({ friends });
+      this.setState({ correctGuess });
+      this.setState({ clickMessage });
+    }
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // state = {
-  //   characters: characters,
-  //   pickedCharacter: [],
-  //   topScore: 0,
-  //   alertMessage: ""
-  // };
-
-  // handlePicked = event => {
-    
-  //   const name = event.target.attribute.getNamedItem("name").value;
-  //   this.shuffleCharacter();
-  //   this.checkGuess(name, this.updateTopScore);
-  // }
-
-  // shuffleCharacter = () => {
-  //   this.setState(this.state.characters = this.shuffleArray(this.state.characters))
-  // }
-
-  // shuffleArray = (a) => {
-  //   var j, x, i;
-  //   for (i = a.length - 1; i > 0; i--) {
-  //     j = Math.floor(Math.random() * (i + 1));
-  //     x = a[i];
-  //     a[i] = a[j];
-  //     a[j] = x;
-  //   }
-  //   return a;
-  // }
+  render() {
+    return(
+      <>
+      <Title>Clicky Game</Title>
+      <h3 className="scoreSummary">{this.state.clickMessage}</h3>
+      {this.state.friends.map(friend => (
+        <CharacterCard
+        setClicked={this.setClicked} 
+        id={friend.id}
+        key={friend.id}
+        name={friend.name}
+        image={friend.image}
+        />
+      ))}
+      </>
+    );
+  };
 }
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-export default App;
+  export default App;
