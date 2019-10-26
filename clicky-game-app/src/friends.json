@@ -70,5 +70,23 @@
     "name": "Ickis",
     "image": "http://static.tvtropes.org/pmwiki/pub/images/ickis.png",
     "clicked": false
+  },
+  {
+    "id": 13,
+    "name": "Jake",
+    "image": "https://vignette.wikia.nocookie.net/adventuretimewithfinnandjake/images/3/3b/Jakesalad.png/revision/latest?cb=20190807133015",
+    "clicked": false
+  },
+  {
+    "id": 14,
+    "name": "Powerpull Girls",
+    "image": "https://s3.r29static.com/bin/entry/60f/0,0,2000,2400/760x912,85/2070661/image.webp",
+    "clicked": false
+  },
+  {
+    "id": 15,
+    "name": "Gumball Watterson",
+    "image": "https://i7.pngguru.com/preview/607/350/505/gumball-watterson-darwin-watterson-penny-fitzgerald-the-authority-cartoon-network-gumball-watterson.jpg",
+    "clicked": false
   }
 ]

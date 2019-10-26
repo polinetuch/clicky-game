@@ -2,7 +2,7 @@ import React from "react";
 import "./CharacterCard.css";
 
 const CharacterCard = props => (
-    <div className="card col-md-3" onClick={() => props.setClicked(props.id)}>
+    <div className="card col-md-2" onClick={() => props.setClicked(props.id)}>
       <div className="img-container">
         <img alt={props.name} src={props.image} />
       </div>
