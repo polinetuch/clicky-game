@@ -76,8 +76,12 @@ class App extends Component {
   render() {
     return(
       <>
-      <Title>Clicky Game</Title>
+      <div className="container">
+          <Title>Clicky Game</Title>
+      </div>
       <h3 className="scoreSummary">{this.state.clickMessage}</h3>
+      <div className="container">
+        <div className="row">
       {this.state.friends.map(friend => (
         <CharacterCard
         setClicked={this.setClicked} 
@@ -87,6 +91,8 @@ class App extends Component {
         image={friend.image}
         />
       ))}
+        </div>
+      </div>
       </>
     );
   };
