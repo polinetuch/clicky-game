@@ -80,6 +80,7 @@ class App extends Component {
           <Title>Clicky Game</Title>
       </div>
       <h3 className="scoreSummary">{this.state.clickMessage}</h3>
+      <h3>Correct Guess: {this.state.correctGuess}</h3>
       <div className="container">
         <div className="row">
       {this.state.friends.map(friend => (
